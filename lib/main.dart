@@ -1,37 +1,240 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Việt')),
-        body: Container(
-          color: Colors.blueAccent,
-          child: Row(
-            children: [
-            Icon(
-              Icons.favorite,
-              color: Colors.redAccent,
-              size: 65,
+
+    /// 1 - Định nghĩa phần tử thứ nhất Image section
+    Widget imageSection = Image.asset(
+      'images/wlop36se.jpg',
+      width: 600,
+      height: 240,
+      fit: BoxFit.cover,
+    );
+
+    /// 2 - Định nghĩa phần tử thứ hai Title section
+    Widget titleSection = Container(
+      padding: const EdgeInsets.all(32),
+      child: Row(
+        children: [
+          ///Phần tử 2.1
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    'Khu du lịch sinh thái Vịnh Hạ Long',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                Text('Quảng Ninh, Việt Nam',
+                style: TextStyle(
+                  color: Colors.grey[500],
+                ),
+              ),
+            ],
+          ),
+        ),
+        /// Phần tử 2.2
+        Icon(
+          Icons.star,
+          color: Colors.red[500],
+        ),
+        /// Phần tử 2.3
+        Text('89'),
+        ],
+      ),
+    );
+
+  /// Phương thức trợ giúp tạo cột button
+  Column _buildButtonColumn(Color color, IconData icon, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(icon, color: color),
+        Container(
+          margin: const EdgeInsets.only(top: 8),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              color: color,
             ),
-            Icon(
-              Icons.star,
-              color: Colors.yellowAccent,
-              size: 65,
-            )
+          ),
+        ),
+      ],
+    );
+  }
+
+  ///Khai báo màu cho phần tử thứ ba
+  Color color = Theme.of(context) .primaryColor;
+
+  ///Định nghĩa phần tử thứ ba Button secton
+  Widget buttonSection = Container(
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ///Sử dụng phương thức để tạo 3 cột giống nhau về bố cục
+        _buildButtonColumn(color, Icons.call, 'Liên hệ'),
+        _buildButtonColumn(color, Icons.near_me, 'Chỉ đường'),
+        _buildButtonColumn(color, Icons.share, 'Chia sẻ'),
+      ],
+    ),
+  );
+
+  /// Định nghĩa phần tử thứ tư Text section
+  Widget textSection = Container(
+    padding: const EdgeInsets.all(32),
+    child: Text(
+      '- Vị trí: Quảng Ninh, Việt Nam.'
+      '                                                                                          Là một vịnh thuộc bờ tây Vịnh Bắc Bộ tại khu vực biển Đông Bắc Việt Nam'
+      '                                                                                                                     '
+      '- Tiêu chuẩn: Thiên Nhiên: VII, VIII.'
+      '                                                                                    '
+      '- Diện tích: 1.553 km² bao gồm 1.969 hòn đảo lớn nhỏ'
+      '                                                                '
+      '- Hệ sinh thái: Rừng kín thường xanh mưa ẩm nhiệt đới, hệ sinh thái biển và ven bờ.'
+      '                                                                 ',
+      softWrap: true,
+    ),
+  );
+
+  Widget textSection2 = Container(
+    padding: const EdgeInsets.all(32),
+    child: Text(
+      'KHU VỰC TRUNG TÂM HẠ LONG:'
+      '                                                                                          '
+      '- Động Thiên Cung'
+      '                                                                                          '
+      '- Hang Đầu Gỗ'
+      '                                                                                          '
+      '- Động Mê Cung'
+      '                                                                                          '
+      '- Hang Trống và Hang Trinh Nữ'
+      '                                                                                          '
+      '- Đảo Soi Sim'
+      '                                                                                          '
+      '- Đảo Ti Tốp'
+      '                                                                                          '
+      '- Hang Luồn'
+      '                                                                                          '
+      '- Hang Sửng Sốt'
+      '                                                                                          '
+      '- Bãi Cháy'
+      '                                                                                          '
+      '- Đảo Tuần Châu'
+      '                                                                                          '
+      '- Làng chài Cửa Vạn'
+      '                                                                                          '
+      'KHU VỰC SUNG QUANH HẠ LONG:'
+      '                                                                                          '
+      '- Đảo Quan Lạn'
+      '                                                                                          '
+      '- Đảo Ngọc Vừng'
+      '                                                                                          '
+      '- Đảo Mắt Rồng'
+      '                                                                                          '
+      '- Núi Bài Thơ'
+      '                                                                                          '
+      '- Bảo tàng Qaungr Ninh'
+      '                                                                                          '
+      '- Trung tâm giải trí Dragon Park'
+      '                                                                                          '
+      '- Cáp trao Nữ hoàng'
+      '                                                                                          '
+      '- Chùa Ba Vàng'
+      '                                                                                          '
+      '- Khu di tích Yên Tử'
+      '                                                                                          '
+      'TRẢI NGHIỆM PHẢI THỬ:'
+      '                                                                                          '
+      '- Chèo thuyền Kayak'
+      '                                                                                          '
+      '- Ngủ đêm trên du thuyền'
+      '                                                                                          '
+      '- Ngắm Vịnh Hạ Long từ thủy phi cơ'
+      '                                                                                          '
+      '- Thử sức với bộ môn leo núi'
+      '                                                                                          '
+      '- Khám phá những hang động tuyệt đẹp'
+      '                                                                                          '
+      '- Thăm các làng chài trên Vịnh'
+      '                                                                                          '
+      'ẨM THỰC ĐẶC SẢN HẠ LONG:'
+      '                                                                                          '
+      '- Xôi trắng chả mực'
+      '                                                                                          '
+      '- Bánh cuốn chả mực'
+      '                                                                                          '
+      '- Các món làm từ Ngán, Sá sùng, Sam biển'
+      '                                                                                          '
+      '- Nem chua, nem chạo Quảng Yên'
+      '                                                                                          '
+      '- Rượu nếp Hoành Bồ',
+      softWrap: true,
+    ),
+  );
+ ///----------------------------------------------------   
+ 
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Nguyễn Hữu Việt'),
+        ),
+        body: Column(
+          children: [
+            imageSection,
+            titleSection,
+            buttonSection,
+            textSection,
           ],
-         ),
         ),
       ),
     );
   }
 }
+
+//---------------------------------------------------------
+
+// class MyApp extends StatelessWidget {
+//   // This widget is the root of your application.
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(title: Text('Việt')),
+//         body: Container(
+//           color: Colors.blueAccent,
+//           child: Row(
+//             children: [
+//             Icon(
+//               Icons.favorite,
+//               color: Colors.redAccent,
+//               size: 65,
+//             ),
+//             Icon(
+//               Icons.star,
+//               color: Colors.yellowAccent,
+//               size: 65,
+//             )
+//           ],
+//          ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//-----------------------------------------------------------------
 
 /*class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
